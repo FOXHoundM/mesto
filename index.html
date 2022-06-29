@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta name="mesto" content="Проект(Javascript) 4 Микаэля на Практикуме" />
+		<meta name="keywords" content="HTML, CSS, Адаптивная вёрстка, Javascript" />
+		<meta name="author" content="Гюльмамедов Микаэль" />
+
+		<link rel="stylesheet" href="./pages/index.css" />
+
+		<title>Mesto Russia</title>
+	</head>
+	<body class="page">
+		<header class="header">
+			<img
+				class="header__logo"
+				src="./image/logo/logomesto.svg"
+				alt="логотип"
+			/>
+			<hr class="header__line" />
+		</header>
+
+		<main class="content">
+			<section class="profile">
+				<img
+					src="./image/avatar.jpg"
+					alt="фото Кусто"
+					class="profile__avatar"
+				/>
+				<div class="profile__info">
+					<h1 class="profile__title">Жак-Ив Кусто</h1>
+					<p class="profile__subtitle">Исследователь океана</p>
+					<button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
+				</div>
+
+
+				<button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
+			</section>
+
+			<section class="elements" aria-label="Карточки мест">
+				<ul class="element">
+					<li>
+						<img
+							src="./image/elements-img/element_1(6).jpg"
+							alt="изображение"
+							class="element__image"
+						/>
+						<div class="element__group">
+							<h2 class="element__title">Карачаевск</h2>
+							<button class="element__like" type="button" aria-label="поставить лайк"></button>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="element">
+					<li>
+						<img
+							src="./image/elements-img/element_2(4).jpg"
+							alt="изображение"
+							class="element__image"
+						/>
+
+						<div class="element__group">
+							<h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__like" type="button" aria-label="поставить лайк"></button>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="element">
+					<li>
+						<img
+							src="./image/elements-img/element_3(5).jpg"
+							alt="изображение"
+							class="element__image"
+						/>
+
+						<div class="element__group">
+							<h2 class="element__title">Домбай</h2>
+							<button class="element__like" type="button" aria-label="поставить лайк"></button>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="element">
+					<li>
+						<img
+							src="./image/elements-img/element_2(4).jpg"
+							alt="изображение"
+							class="element__image"
+						/>
+
+						<div class="element__group">
+							<h2 class="element__title">Гора Эльбрус</h2>
+							<button class="element__like" type="button" aria-label="поставить лайк"></button>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="element">
+					<li>
+						<img
+							src="./image/elements-img/element_3(5).jpg"
+							alt="изображение"
+							class="element__image"
+						/>
+
+						<div class="element__group">
+							<h2 class="element__title">Домбай</h2>
+							<button class="element__like" type="button" aria-label="поставить лайк"></button>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="element">
+					<li>
+						<img
+							src="./image/elements-img/element_1(6).jpg"
+							alt="изображение"
+							class="element__image"
+						/>
+
+						<div class="element__group">
+							<h2 class="element__title">Карачаево-Ч...</h2>
+							<button class="element__like" type="button" aria-label="поставить лайк"></button>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<p class="footer__copyright">&copy;&nbsp; 2022 Микаэль</p>
+		</footer>
+
+		<!--POP-UP-->
+		<section class="popup ">
+			<div class="popup__container">
+				<div class="popup__body">
+					<h2 class="popup__title">Редактировать профиль</h2>
+					<form name="formPopup" class="popup__form">
+            
+						<input type="text" placeholder="" class="popup__input popup__input_type_name" />
+						<input type="text" placeholder="" class="popup__input popup__input_type_prof" />
+
+						<button class="popup__save-button">Сохранить</button>
+					</form>
+
+					<button type="submit" class="popup__close"></button>
+				</div>
+			</div>
+		</section>
+
+		<script src="./scripts/index.js"></script>
+	</body>
+</html>

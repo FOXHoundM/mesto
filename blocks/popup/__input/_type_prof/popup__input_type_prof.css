@@ -1,0 +1,10 @@
+.popup__input_type_prof {
+	margin-bottom: 48px;
+
+}
+
+@media screen and (max-width: 580px){
+  .popup__input_type_prof{
+    margin-bottom: 45px;
+  }
+}
