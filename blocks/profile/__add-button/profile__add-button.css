@@ -6,9 +6,8 @@
 	background-position: center center;
 	background-size: 22px;
 	background-repeat: no-repeat;
-	position: absolute;
-	right: 0;
-	border: 1px solid #ffffff;
+	border: 2px solid #ffffff;
+	border-radius: 2px;
 }
 
 .profile__add-button:hover {
