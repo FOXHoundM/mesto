@@ -9,16 +9,15 @@
 	position: absolute;
 	right: 0;
 	border: 1px solid #ffffff;
-
 }
 
 .profile__add-button:hover {
-  transition: 0.7s ease-in-out;
+	transition: 0.7s ease-in-out;
 	cursor: pointer;
 	opacity: 0.6;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 875px) {
 	.profile__add-button {
 		min-width: 282px;
 		position: static;

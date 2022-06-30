@@ -1,9 +1,11 @@
-.page{
-  font-family: "Inter", Arial, sans-serif;
-  max-width: 1280px;
+.page {
+	font-family: "Inter", Arial, sans-serif;
+	max-width: 1280px;
 	min-width: 320px;
 	min-height: 100vh;
 	margin: 0 auto;
-  background-color: #000;
-  color: #ffffff;
+	background-color: #000;
+	color: #ffffff;
+	padding-left: 7px;
+	padding-right: 7px;
 }

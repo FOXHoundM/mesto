@@ -3,22 +3,22 @@
 	margin: 0 auto 60px;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 875px) {
 	.footer {
 		max-width: 800px;
-		margin: 0 auto 36px auto;
+		margin-bottom: 36px;
+		margin-left: 27px;
 	}
 }
 
 @media screen and (max-width: 660px) {
 	.footer {
 		max-width: 580px;
-		margin: 0 auto 36px auto;
+		margin-left: auto;
 	}
 }
 @media screen and (max-width: 584px) {
 	.footer {
 		max-width: 282px;
-		margin: 0 auto 36px auto;
 	}
 }

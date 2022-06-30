@@ -6,16 +6,15 @@
 	max-width: 336px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 875px) {
 	.profile__info {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    row-gap: 0;
-    margin: 0 auto 36px;
-    text-align: center;
-    position: relative;
-    box-sizing: border-box;
-	
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		row-gap: 0;
+		margin: 0 auto 36px;
+		text-align: center;
+		position: relative;
+		box-sizing: border-box;
 	}
 }

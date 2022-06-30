@@ -14,9 +14,7 @@ const professionInput = document.querySelector(".popup__input_type_prof");
 
 const popupProf = document.querySelector(".profile__subtitle");
 
-//const addButton = document.querySelector(".profile__add-button");
-
-//const popupSave = document.querySelector(".popup__save-button");
+const saveButton = document.querySelector(".prfile__save-button");
 
 function openPopup() {
 	popup.classList.add("popup_opened");
@@ -27,15 +25,18 @@ function closePopup() {
 	popup.classList.remove("popup_opened");
 }
 
+
+function submitForm(evt) {
+	evt.preventDefault();
+	popupName.textContent = nameInput.value;
+	popupProf.textContent = professionInput.value;
+	closePopup();
+}
+
 editButton.addEventListener("click", openPopup);
 
 popupClose.addEventListener("click", closePopup);
 
-function submitForm(event) {
-	event.preventDefault();
-	popupName.textContent = nameInput.value;
-  popupProf.textContent = professionInput.value;
-  closePopup();
-}
+popupForm.addEventListener("submit", submitForm);
 
-popupForm.addEventListener("submit", submitForm)
+console.log(submitForm);
