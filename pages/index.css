@@ -28,11 +28,11 @@
 @import url("../blocks/elements/__item/elements__item.css");
 
 /*Card*/
-@import url("../blocks/card/__flex/card__flex.css");
-@import url("../blocks/card/__image/card__image.css");
-@import url("../blocks/card/__like/card__like.css");
-@import url("../blocks/card/__title/card__title.css");
-@import url("../blocks/card/card.css");
+@import url("../blocks/cards/__text/cards__text.css");
+@import url("../blocks/cards/__image/cards__image.css");
+@import url("../blocks/cards/__like/cards__like.css");
+@import url("../blocks/cards/__title/cards__title.css");
+@import url("../blocks/cards/cards.css");
 
 
 /*Footer*/

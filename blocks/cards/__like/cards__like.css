@@ -1,4 +1,4 @@
-.card__like {
+.cards__like {
 	width: 22px;
 	height: 19px;
 	background-image: url("../../../image/buttons/heart.svg");
@@ -6,11 +6,11 @@
 	border: none;
 }
 
-.card__like:hover {
+.cards__like:hover {
 	transition: 0.7s ease-in-out;
 	cursor: pointer;
 	opacity: 0.5;
 }
 
-.card__like:active {
+.cards__like:active {
 }
