@@ -3,10 +3,8 @@
 	margin: 0 auto 67px;
 }
 
-@media screen and (max-width: 875px){
-.elements{
-  margin-bottom: 48px;
+@media screen and (max-width: 875px) {
+	.elements {
+		margin-bottom: 48px;
+	}
 }
-  
-}
-

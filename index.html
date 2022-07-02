@@ -17,7 +17,7 @@
 		<header class="header">
 			<img
 				class="header__logo"
-				src="./image/logo/logomesto.svg"
+				src="./images/logo/logomesto.svg"
 				alt="логотип"
 			/>
 		</header>
@@ -25,7 +25,7 @@
 		<main class="content">
 			<section class="profile">
 				<img
-					src="./image/avatar.jpg"
+					src="./images/avatar.jpg"
 					alt="фото аватара"
 					class="profile__avatar"
 				/>
@@ -35,104 +35,84 @@
 					<button
 						class="profile__edit-button"
 						type="button"
+						aria-label="Редактировать профиль"
 					></button>
 				</div>
 
-				<button
-					class="profile__add-button"
-					type="button"
-				></button>
+				<button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
 			</section>
 
 			<section class="elements">
 				<ul class="elements__item">
 					<li class="cards">
 						<img
-							src="./image/elements-img/element_1(6).jpg"
+							src="./images/elements-img/element_1(6).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Карачаевск</h2>
-							<button
-								class="cards__like"
-								type="button"
-							></button>
+							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
 						</div>
 					</li>
 
 					<li class="cards">
 						<img
-							src="./image/elements-img/element_2(4).jpg"
+							src="./images/elements-img/element_2(4).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Гора Эльбрус</h2>
-							<button
-								class="cards__like"
-								type="button"
-							></button>
+							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
 						</div>
 					</li>
 
 					<li class="cards">
 						<img
-							src="./image/elements-img/element_3(5).jpg"
+							src="./images/elements-img/element_3(5).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Домбай</h2>
-							<button
-								class="cards__like"
-								type="button"
-							></button>
+							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
 						</div>
 					</li>
 
 					<li class="cards">
 						<img
-							src="./image/elements-img/element_2(4).jpg"
+							src="./images/elements-img/element_2(4).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Гора Эльбрус</h2>
-							<button
-								class="cards__like"
-								type="button"
-							></button>
+							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
 						</div>
 					</li>
 
 					<li class="cards">
 						<img
-							src="./image/elements-img/element_3(5).jpg"
+							src="./images/elements-img/element_3(5).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Домбай</h2>
-							<button
-								class="cards__like"
-								type="button"
-							></button>
+							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
 						</div>
 					</li>
 
 					<li class="cards">
 						<img
-							src="./image/elements-img/element_1(6).jpg"
+							src="./images/elements-img/element_1(6).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Карачаево-Ч...</h2>
-							<button
-								class="cards__like"
-								type="button"
-							></button>
+							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
 						</div>
 					</li>
 				</ul>
@@ -146,10 +126,7 @@
 		<!--POP-UP-->
 		<div class="popup">
 			<div class="popup__container">
-				<button
-					class="popup__close"
-					type="button"
-				></button>
+				<button class="popup__close" type="button" aria-label="закрыть окно"></button>
 
 				<h2 class="popup__title">Редактировать профиль</h2>
 
@@ -166,7 +143,7 @@
 						name="editProffession"
 						placeholder=" "
 					/>
-					<button class="popup__save-button" type="submit">Сохранить</button>
+					<button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
 				</form>
 			</div>
 		</div>

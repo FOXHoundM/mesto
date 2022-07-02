@@ -3,13 +3,15 @@
 	height: 24px;
 	grid-column: 2;
 	align-self: center;
-	background-color: #000;
-	background-image: url("../../../image/buttons/editbutton.svg");
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url("../../../images/buttons/editbutton.svg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 10px;
 	margin: 0;
 	border: 1px solid #ffffff;
+
+	/*background-color: transparent;*/
 }
 
 .profile__edit-button:hover {
@@ -31,7 +33,7 @@
 		width: 18px;
 		height: 18px;
 		background-size: 7.5px;
-		right: 8px;
+		right: 15px;
 		top: 8px;
 	}
 }
