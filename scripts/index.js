@@ -1,40 +1,58 @@
-const popup = document.querySelector('.popup');
+//POPUPS
+const popupEdit = document.querySelector('.popup_edit');
+const popupAdd = document.querySelector('.popup_add');
 
-const popupClose = document.querySelector('.popup__close');
+//POPUPS CLOSE BUTTONS
+const editClose = popupEdit.querySelector('.popup__close');
+const addClose = popupAdd.querySelector('.popup__close');
 
-const editButton = document.querySelector('.profile__edit-button');
+//POPUPS OPEN BUTTONS
+const editOpen = document.querySelector('.profile__edit-button');
+const addOpen = document.querySelector('.profile__add-button');
 
+//POPUP EDIT FORM
 const popupForm = document.querySelector('.popup__form');
-
 const nameInput = document.querySelector('.popup__input_type_name');
-
 const popupName = document.querySelector('.profile__title');
-
 const professionInput = document.querySelector('.popup__input_type_prof');
-
 const popupProf = document.querySelector('.profile__subtitle');
 
-const saveButton = document.querySelector('.prfile__save-button');
+//POPUPS SAVE BUTTONS
+const saveButton = document.querySelector('.popup__save-button');
 
-function openPopup() {
-	popup.classList.add('popup_opened');
-	nameInput.value = popupName.textContent;
-	professionInput.value = popupProf.textContent;
-}
-function closePopup() {
-	popup.classList.remove('popup_opened');
-}
-
+//FUNCTIONS
+const togglePopup = function (popup) {
+	popup.classList.toggle('popup_opened');
+};
 
 function submitForm(evt) {
 	evt.preventDefault();
 	popupName.textContent = nameInput.value;
 	popupProf.textContent = professionInput.value;
-	closePopup();
 }
 
-editButton.addEventListener('click', openPopup);
+editOpen.addEventListener('click', function () {
+	togglePopup(popupEdit);
+	nameInput.value = popupName.textContent;
+	professionInput.value = popupProf.textContent;
+});
 
-popupClose.addEventListener('click', closePopup);
+addOpen.addEventListener('click', function () {
+	togglePopup(popupAdd);
+});
+
+editClose.addEventListener('click', function () {
+	togglePopup(popupEdit);
+});
+
+addClose.addEventListener('click', function () {
+	togglePopup(popupAdd);
+});
+
+popupForm.addEventListener('submit', function () {
+	togglePopup(popupEdit);
+});
 
 popupForm.addEventListener('submit', submitForm);
+
+

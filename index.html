@@ -39,7 +39,11 @@
 					></button>
 				</div>
 
-				<button class="profile__add-button" type="button" aria-label="Добавить фото"></button>
+				<button
+					class="profile__add-button"
+					type="button"
+					aria-label="Добавить фото"
+				></button>
 			</section>
 
 			<section class="elements">
@@ -50,9 +54,15 @@
 							alt="изображение"
 							class="cards__image"
 						/>
+
+						<button class="cards__delete"></button>
 						<div class="cards__text">
 							<h2 class="cards__title">Карачаевск</h2>
-							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
+							<button
+								class="cards__like"
+								type="button"
+								aria-label="поставить лайк"
+							></button>
 						</div>
 					</li>
 
@@ -64,7 +74,11 @@
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Гора Эльбрус</h2>
-							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
+							<button
+								class="cards__like"
+								type="button"
+								aria-label="поставить лайк"
+							></button>
 						</div>
 					</li>
 
@@ -76,7 +90,11 @@
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Домбай</h2>
-							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
+							<button
+								class="cards__like"
+								type="button"
+								aria-label="поставить лайк"
+							></button>
 						</div>
 					</li>
 
@@ -88,7 +106,11 @@
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Гора Эльбрус</h2>
-							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
+							<button
+								class="cards__like"
+								type="button"
+								aria-label="поставить лайк"
+							></button>
 						</div>
 					</li>
 
@@ -100,7 +122,11 @@
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Домбай</h2>
-							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
+							<button
+								class="cards__like"
+								type="button"
+								aria-label="поставить лайк"
+							></button>
 						</div>
 					</li>
 
@@ -112,7 +138,11 @@
 						/>
 						<div class="cards__text">
 							<h2 class="cards__title">Карачаево-Ч...</h2>
-							<button class="cards__like" type="button" aria-label="поставить лайк"></button>
+							<button
+								class="cards__like"
+								type="button"
+								aria-label="поставить лайк"
+							></button>
 						</div>
 					</li>
 				</ul>
@@ -123,10 +153,14 @@
 			<p class="footer__copyright">&copy;&nbsp; 2022 Микаэль</p>
 		</footer>
 
-		<!--POP-UP-->
-		<div class="popup">
+		<!--POP-UP EDIT-->
+		<div class="popup popup_edit">
 			<div class="popup__container">
-				<button class="popup__close" type="button" aria-label="закрыть окно"></button>
+				<button
+					class="popup__close"
+					type="button"
+					aria-label="закрыть окно"
+				></button>
 
 				<h2 class="popup__title">Редактировать профиль</h2>
 
@@ -143,10 +177,60 @@
 						name="editProffession"
 						placeholder=" "
 					/>
-					<button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
+					<button
+						class="popup__save-button"
+						type="submit"
+						aria-label="Сохранить"
+					>
+						Сохранить
+					</button>
 				</form>
 			</div>
 		</div>
+
+		<!--POP UP ADD-->
+		<div class="popup popup_add">
+			<div class="popup__container">
+				<button
+					class="popup__close"
+					type="button"
+					aria-label="закрыть окно"
+				></button>
+
+				<h2 class="popup__title">Новое место</h2>
+
+				<form class="popup__form" name="editphoto">
+					<input
+						type="text"
+						class="popup__input popup__input_type_name"
+						name="editName"
+						placeholder="Название "
+					/>
+					<input
+						type="text"
+						class="popup__input popup__input_type_link"
+						name="editlink"
+						placeholder="Сссылка на картинку "
+					/>
+					<button class="popup__save-button" type="submit" aria-label="Создать">
+						Создать
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="popup popup_photo">
+			<div class="popup__container">
+				<button
+				class="popup__close"
+				type="button"
+				aria-label="закрыть окно"
+			></button>
+			<p class="popup__subtitle"></p>
+			</div>
+		</div>
+
+
 
 		<script src="./scripts/index.js"></script>
 	</body>
