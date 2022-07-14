@@ -48,14 +48,15 @@
 
 			<section class="elements">
 				<ul class="elements__item">
-					<li class="cards">
+					<!--<li class="cards">
+						<button class="cards__delete"></button>
+
 						<img
 							src="./images/elements-img/element_1(6).jpg"
 							alt="изображение"
 							class="cards__image"
 						/>
 
-						<button class="cards__delete"></button>
 						<div class="cards__text">
 							<h2 class="cards__title">Карачаевск</h2>
 							<button
@@ -144,7 +145,7 @@
 								aria-label="поставить лайк"
 							></button>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 			</section>
 		</main>
@@ -199,17 +200,17 @@
 
 				<h2 class="popup__title">Новое место</h2>
 
-				<form class="popup__form" name="editphoto">
+				<form class="popup__form" name="addphoto">
 					<input
 						type="text"
-						class="popup__input popup__input_type_name"
-						name="editName"
+						class="popup__input popup__input_type_title"
+						name="addTitle"
 						placeholder="Название "
 					/>
 					<input
 						type="text"
 						class="popup__input popup__input_type_link"
-						name="editlink"
+						name="addlink"
 						placeholder="Сссылка на картинку "
 					/>
 					<button class="popup__save-button" type="submit" aria-label="Создать">
@@ -219,19 +220,41 @@
 			</div>
 		</div>
 
-		<div class="popup popup_photo">
+		<!--POPUP IMAGE-->
+		<div class="popup popup_image">
+
 			<div class="popup__container">
 				<button
-				class="popup__close"
-				type="button"
-				aria-label="закрыть окно"
-			></button>
-			<p class="popup__subtitle"></p>
+					class="popup__close"
+					type="button"
+					aria-label="закрыть окно"
+				></button>
+				<img src="" alt="" class="popup__image" />
+				<p class="popup__subtitle"></p>
 			</div>
 		</div>
 
+		<!--TEMPLATE-->
+		<template class="template">
+			<li class="cards">
+				<button class="cards__delete"></button>
+				<img
+					src="${link}"
+					alt="изображение"
+					class="cards__image"
+				/>
+				<div class="cards__text">
+					<h2 class="cards__title">${name}</h2>
+					<button
+						class="cards__like"
+						type="button"
+						aria-label="поставить лайк"
+					></button>
+				</div>
+			</li>
+		</template>
 
-
+		<!--<script src="./scripts/index.js"></script>-->
 		<script src="./scripts/index.js"></script>
 	</body>
 </html>
