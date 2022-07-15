@@ -14,7 +14,7 @@ const imageOpen = document.querySelector('.cards__image');
 const imageSize = document.querySelector('.popup__image');
 const imageSubtitle = document.querySelector('.popup__subtitle');
 
-const popupForm = document.querySelector('.popup__form');
+const popupForm = popupEdit.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_name');
 const popupName = document.querySelector('.profile__title');
 const professionInput = document.querySelector('.popup__input_type_prof');
@@ -60,62 +60,3 @@ imageClose.addEventListener('click', function () {
 });
 
 popupForm.addEventListener('submit', submitForm);
-
-const form = document.querySelector('.popup__form');
-const inputTitle = document.querySelector('.popup__input_type_title');
-const inputLink = document.querySelector('.popup__input_type_link');
-const template = document.querySelector('.template');
-const elementsItem = document.querySelector('.elements__item');
-const name = document.querySelector('.cards__title');
-const link = document.querySelector('.cards__image');
-
-function createCard(name) {
-	const template = document
-		.querySelector('.template')
-		.textContent.querySelector('.elements__item')
-		.cloneNode(true);
-
-	elementsItem.appendChild(template);
-}
-
-function addEventListeners() {
-	popupForm.addEventListener('submit', function (event) {
-		event.preventDefault();
-
-		createCard(input.value);
-	});
-}
-
-function createInitialCards() {
-	const initialCards = [
-		{
-			name: 'Архыз',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-		},
-		{
-			name: 'Челябинская область',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-		},
-		{
-			name: 'Иваново',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-		},
-		{
-			name: 'Камчатка',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-		},
-		{
-			name: 'Холмогорский район',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-		},
-		{
-			name: 'Байкал',
-			link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-		},
-	];
-
-	initialCards.forEach(createCard);
-}
-
-addEventListeners();
-createInitialCards();
