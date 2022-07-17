@@ -6,7 +6,5 @@
 }
 
 .cards__image:hover{
-	transition: 0.7s ease-in-out;
 	cursor: pointer;
-	opacity: 0.8;
 }
