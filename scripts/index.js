@@ -19,10 +19,8 @@ const cardInputName = document.querySelector('.popup__input_type_title');
 const cardInputLink = document.querySelector('.popup__input_type_link');
 
 const elements = document.querySelector('.elements');
-
 const elementsItem = elements.querySelector('.elements__item');
 
-//FUNCTIONS
 const togglePopup = function (popup) {
 	popup.classList.toggle('popup_opened');
 };
@@ -128,6 +126,22 @@ addClose.addEventListener('click', function () {
 });
 
 popupForm.addEventListener('submit', submitForm);
+
+const template = document.querySelector('.template');
+const popupImage = document.querySelector('.popup_image');
+const imageClose = popupImage.querySelector('.popup__close');
+
+const imageOpen = document.querySelector('.popup__image');
+const imageSubtitle = document.querySelector('.popup__subtitle');
+
+
+imageOpen.addEventListener('click', function () {
+	togglePopup(popupImage);
+});
+
+imageClose.addEventListener('click', function () {
+	togglePopup(popupImage);
+});
 
 addEventListeners();
 createInitialCards();
