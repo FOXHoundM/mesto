@@ -60,14 +60,14 @@
 		<div class="popup popup_edit">
 			<div class="popup__container">
 				<button
-					class="popup__close"
+					class="popup__close popup__close_edit"
 					type="button"
 					aria-label="закрыть окно"
 				></button>
 
 				<h2 class="popup__title">Редактировать профиль</h2>
 
-				<form class="popup__form" name="editProfile">
+				<form class="popup__form popup__form_edit" name="editProfile">
 					<input
 						type="text"
 						class="popup__input popup__input_type_name"
@@ -95,14 +95,14 @@
 		<div class="popup popup_add">
 			<div class="popup__container">
 				<button
-					class="popup__close"
+					class="popup__close popup__close_add"
 					type="button"
 					aria-label="закрыть окно"
 				></button>
 
 				<h2 class="popup__title">Новое место</h2>
 
-				<form class="popup__form" name="addphoto">
+				<form class="popup__form popup__form_add" name="addphoto">
 					<input
 						type="text"
 						class="popup__input popup__input_type_title"
@@ -162,5 +162,6 @@
 		</template>
 
 		<script src="./scripts/index.js"></script>
+		<script src="./scripts/cards.js"></script>
 	</body>
 </html>

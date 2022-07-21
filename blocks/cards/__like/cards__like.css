@@ -4,6 +4,7 @@
 	background-image: url('../../../images/buttons/heart.svg');
 	background-repeat: no-repeat;
 	border: none;
+	background-color: unset;
 }
 
 .cards__like:hover {
