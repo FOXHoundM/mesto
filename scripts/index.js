@@ -1,4 +1,3 @@
-const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupImage = document.querySelector('.popup_image');
@@ -15,7 +14,6 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const popupName = document.querySelector('.profile__title');
 const professionInput = document.querySelector('.popup__input_type_prof');
 const popupProf = document.querySelector('.profile__subtitle');
-const imageSubtitle = document.querySelector('.popup__subtitle');
 const formAdd = document.querySelector('.popup__form_add');
 const cardInputName = document.querySelector('.popup__input_type_title');
 const cardInputLink = document.querySelector('.popup__input_type_link');
@@ -37,7 +35,7 @@ function submitForm(evt) {
 	evt.preventDefault();
 	popupName.textContent = nameInput.value;
 	popupProf.textContent = professionInput.value;
-	togglePopup(popupEdit);
+	closePopup(popupEdit);
 }
 
 function createCard(card) {
@@ -66,8 +64,8 @@ function createCard(card) {
 		popupImageSize.src = card.link;
 	});
 
-	return 
-	//cardsContainer.prepend(template);
+
+	cardsContainer.prepend(template);
 }
 
 
