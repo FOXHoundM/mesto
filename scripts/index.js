@@ -45,15 +45,15 @@ function createCard(card) {
 	const cardImage = template.querySelector('.cards__image');
 	const cardTitle = template.querySelector('.cards__title');
 
+	const cardDelete = template.querySelector('.cards__delete');
+	const cardLike = template.querySelector('.cards__like');
+
 	cardTitle.textContent = card.name;
 	cardImage.alt = card.name;
 	cardImage.src = card.link;
 
-	template
-		.querySelector('.cards__delete')
-		.addEventListener('click', handleDelete);
-
-	template.querySelector('.cards__like').addEventListener('click', handleLike);
+	cardDelete.addEventListener('click', handleDelete);
+	cardLike.addEventListener('click', handleLike);
 
 	cardImage.addEventListener('click', function () {
 		openPopup(popupImage);
@@ -66,7 +66,8 @@ function createCard(card) {
 		popupImageSize.src = card.link;
 	});
 
-	cardsContainer.prepend(template);
+	return 
+	//cardsContainer.prepend(template);
 }
 
 
