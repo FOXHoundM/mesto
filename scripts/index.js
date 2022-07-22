@@ -43,12 +43,13 @@ function createCard(card) {
 	const cardImage = template.querySelector('.cards__image');
 	const cardTitle = template.querySelector('.cards__title');
 
-	const cardDelete = template.querySelector('.cards__delete');
-	const cardLike = template.querySelector('.cards__like');
-
 	cardTitle.textContent = card.name;
 	cardImage.alt = card.name;
 	cardImage.src = card.link;
+
+
+	const cardDelete = template.querySelector('.cards__delete');
+	const cardLike = template.querySelector('.cards__like');
 
 	cardDelete.addEventListener('click', handleDelete);
 	cardLike.addEventListener('click', handleLike);
@@ -62,11 +63,21 @@ function createCard(card) {
 		popupSubtitle.textContent = card.name;
 		popupImageSize.alt = card.name;
 		popupImageSize.src = card.link;
+
+
 	});
 
+	return card;
+	// cardsContainer.prepend(template);
+}
+
+function renderCard(createCard) {
 
 	cardsContainer.prepend(template);
+
 }
+
+
 
 
 function handleLike(event) {
@@ -82,12 +93,12 @@ function handleDelete(event) {
 formAdd.addEventListener('submit', function (event) {
 	event.preventDefault();
 
-	const newCard = {
+	const card = {
 		name: cardInputName.value,
 		link: cardInputLink.value,
 	};
 
-	createCard(newCard);
+	renderCard(card);
 
 	closePopup(popupAdd);
 
