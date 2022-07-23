@@ -25,10 +25,12 @@ const initialCards = [
 	},
 ];
 
-function createInitialCards() {
-	initialCards.forEach(createCard);
-}
 
+function createInitialCards () {
+	initialCards.forEach(function (card) {
+		cardsContainer.prepend(createCard(card));
+	});
+}
 createInitialCards();
 
 
