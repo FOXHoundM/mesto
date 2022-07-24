@@ -24,6 +24,8 @@ const container = document
 const section = document.querySelector('.elements');
 const cardsContainer = section.querySelector('.elements__item');
 
+const popupSubtitle = popupImage.querySelector('.popup__subtitle');
+const popupImageSize = popupImage.querySelector('.popup__image');
 
 
 const openPopup = function (popup) {
@@ -85,16 +87,6 @@ const closePopup = function (popup) {
 
 
 
-
-function submitForm(evt) {
-	evt.preventDefault();
-	popupName.textContent = nameInput.value;
-	popupProf.textContent = professionInput.value;
-	closePopup(popupEdit);
-}
-
-
-
 const createCard = (card) => {
 	const template = container.cloneNode(true);
 	const cardImage = template.querySelector('.cards__image');
@@ -113,16 +105,25 @@ const createCard = (card) => {
 	cardImage.addEventListener('click', function () {
 		openPopup(popupImage);
 
-		const popupSubtitle = popupImage.querySelector('.popup__subtitle');
-		const popupImageSize = popupImage.querySelector('.popup__image');
-
 		popupSubtitle.textContent = card.name;
 		popupImageSize.alt = card.name;
 		popupImageSize.src = card.link;
 	});
 
-	// cardsContainer.prepend(template);
 	return template;
+}
+
+function createInitialCards () {
+	initialCards.forEach(function (card) {
+		cardsContainer.prepend(createCard(card));
+	});
+}
+
+function submitForm(evt) {
+	evt.preventDefault();
+	popupName.textContent = nameInput.value;
+	popupProf.textContent = professionInput.value;
+	closePopup(popupEdit);
 }
 
 function handleLike(event) {
@@ -143,13 +144,10 @@ formAdd.addEventListener('submit', function (event) {
 			link: cardInputLink.value,
 		};
 
-		createCard(card);
-
 		closePopup(popupAdd);
 		cardsContainer.prepend(createCard(card));
 
 	});
-
 
 
 popupEditOpen.addEventListener('click', function () {
@@ -175,9 +173,10 @@ popupImageClose.addEventListener('click', function () {
 	closePopup(popupImage);
 });
 
-
-
 popupForm.addEventListener('submit', submitForm);
+
+createInitialCards();
+
 
 
 

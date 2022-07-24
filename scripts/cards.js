@@ -26,11 +26,6 @@ const initialCards = [
 ];
 
 
-function createInitialCards () {
-	initialCards.forEach(function (card) {
-		cardsContainer.prepend(createCard(card));
-	});
-}
-createInitialCards();
+
 
 
