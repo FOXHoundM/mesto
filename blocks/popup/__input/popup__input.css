@@ -10,20 +10,14 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	margin-bottom: 28px;
-	padding-bottom: 6px;
+	padding-bottom: 5px;
 }
 
 .popup__input:focus {
 	outline: none;
 }
 
-.popup__input:last-of-type {
-	margin-bottom: 48px;
+.popup__input:last-of-type{
+	margin-top: 28px;
 }
 
-@media screen and (max-width: 575px) {
-	.popup__input:last-of-type {
-		margin-bottom: 45px;
-	}
-}
