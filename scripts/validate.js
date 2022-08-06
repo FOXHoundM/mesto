@@ -1,4 +1,4 @@
-const showInputError = (formElement, inputElement, errorMessage, obj) =>{
+const showInputError = (formElement, inputElement, errorMessage, obj) => {
    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
    inputElement.classList.add(obj.inputErrorClass);
    errorElement.textContent = errorMessage;
@@ -31,17 +31,17 @@ const activeButton = (buttonElement, obj) => {
 }
 
 const toggleButtonState = (inputList, buttonElement, obj) => {
-   if (hasInvalidInput(inputList)){
+   if (hasInvalidInput(inputList)) {
       disabledButton(buttonElement, obj);
-   } else{
+   } else {
       activeButton(buttonElement, obj);
    }
 }
 
 const isValid = (formElement, inputElement, obj) => {
-   if(!inputElement.validity.valid){
+   if (!inputElement.validity.valid) {
       showInputError(formElement, inputElement, inputElement.validationMessage, obj);
-   }else{
+   } else {
       hideInputError(formElement, inputElement, obj);
    }
 }
@@ -52,7 +52,7 @@ const setEventListeners = (formElement, obj) => {
 
    toggleButtonState(inputList, buttonElement, obj);
 
-   inputList.forEach((inputElement)=> {
+   inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
          isValid(formElement, inputElement, obj);
          toggleButtonState(inputList, buttonElement, obj);
@@ -70,7 +70,7 @@ const enableValidation = (obj) => {
    });
 }
 
- enableValidation ({
+enableValidation({
    formSelector: '.popup__form',
    inputSelector: '.popup__input',
    submitButtonSelector: '.popup__save-button',
