@@ -2,8 +2,6 @@
 	width: 358px;
 	height: 50px;
 	border-radius: 2px;
-	color: #fff;
-	background-color: #000;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
@@ -12,6 +10,8 @@
 	border: none;
 	transition: opacity 0.5s ease;
 	margin-top: 48px;
+	color: #fff;
+	background-color: #000;
 }
 
 .popup__save-button:hover {
@@ -31,7 +31,6 @@
 		margin-top: 45px;
 	}
 }
-
 
 
 
