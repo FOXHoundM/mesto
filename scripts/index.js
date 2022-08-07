@@ -121,7 +121,6 @@ formAdd.addEventListener('submit', function (event) {
 	closePopup(popupAdd);
 
 	disabledButton(buttonElement, formElementList);
-	console.log(disabledButton(buttonElement, formElementList));
 });
 
 popupEditOpen.addEventListener('click', function () {
@@ -129,7 +128,6 @@ popupEditOpen.addEventListener('click', function () {
 	professionInput.value = popupProf.textContent;
 	openPopup(popupEdit);
 	activeButton(buttonElement, formElementList);
-	console.log(activeButton(buttonElement, formElementList));
 });
 
 popupAddOpen.addEventListener('click', function () {
