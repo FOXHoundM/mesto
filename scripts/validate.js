@@ -19,13 +19,11 @@ const hasInvalidInput = (inputList) => {
 }
 
 const disabledButton = (buttonElement, obj) => {
-   // buttonElement.classList.remove(obj.activeButtonClass);
    buttonElement.classList.add(obj.inactiveButtonClass);
    buttonElement.disabled = true;
 }
 
 const activeButton = (buttonElement, obj) => {
-   // buttonElement.classList.add(obj.activeButtonClass);
    buttonElement.classList.remove(obj.inactiveButtonClass);
    buttonElement.disabled = false;
 }
@@ -75,7 +73,6 @@ enableValidation({
    inputSelector: '.popup__input',
    submitButtonSelector: '.popup__save-button',
    inactiveButtonClass: 'popup__save-button_invalid',
-   // activeButtonClass: 'popup__save-button_valid',
    inputErrorClass: 'popup__input_type_error',
    errorTextClass: 'popup__error',
 })
