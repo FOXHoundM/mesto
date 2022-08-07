@@ -98,6 +98,7 @@ function submitForm(evt) {
 	popupProf.textContent = professionInput.value;
 
 	closePopup(popupEdit);
+	disabledButton(buttonElement, formElementList);
 }
 
 function buttonLike(event) {
