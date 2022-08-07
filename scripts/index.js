@@ -93,8 +93,10 @@ function createInitialCards() {
 
 function submitForm(evt) {
 	evt.preventDefault();
+
 	popupName.textContent = nameInput.value;
 	popupProf.textContent = professionInput.value;
+
 	closePopup(popupEdit);
 }
 
@@ -124,10 +126,10 @@ formAdd.addEventListener('submit', function (event) {
 });
 
 popupEditOpen.addEventListener('click', function () {
-	nameInput.value = popupName.textContent;
-	professionInput.value = popupProf.textContent;
 	openPopup(popupEdit);
 	activeButton(buttonElement, formElementList);
+	nameInput.value = popupName.textContent;
+	professionInput.value = popupProf.textContent;
 });
 
 popupAddOpen.addEventListener('click', function () {
