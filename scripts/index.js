@@ -128,6 +128,7 @@ formAdd.addEventListener('submit', function (event) {
 
 popupEditOpen.addEventListener('click', function () {
 	openPopup(popupEdit);
+	activeButton(buttonElement, formElementList);
 	nameInput.value = popupName.textContent;
 	professionInput.value = popupProf.textContent;
 });
