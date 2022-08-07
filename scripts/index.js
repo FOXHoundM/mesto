@@ -102,8 +102,8 @@ function submitForm(evt) {
 }
 
 function handleLike(event) {
-	const buttonLike = event.target;
-	buttonLike.classList.toggle('cards__like_active');
+	const cardLike = event.target;
+	cardLike.classList.toggle('cards__like_active');
 }
 
 function handleDelete(event) {
