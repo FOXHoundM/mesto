@@ -73,7 +73,7 @@ const createCard = (card) => {
 	const cardLike = template.querySelector('.cards__like');
 
 	cardDelete.addEventListener('click', handleDelete);
-	cardLike.addEventListener('click', buttonLike);
+	cardLike.addEventListener('click', handleLike)
 
 	cardImage.addEventListener('click', function () {
 		openPopup(popupImage);
@@ -101,9 +101,9 @@ function submitForm(evt) {
 	disabledButton(buttonElement, formElementList);
 }
 
-function buttonLike(event) {
-	const card = event.target;
-	card.classList.toggle('cards__like_active');
+function handleLike(event) {
+	const buttonLike = event.target;
+	buttonLike.classList.toggle('cards__like_active');
 }
 
 function handleDelete(event) {
