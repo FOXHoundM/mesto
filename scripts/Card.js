@@ -1,9 +1,8 @@
-import {openPopup, closePopup} from "./index.js";
-
 const section = document.querySelector('.elements');
 const cardsContainer = section.querySelector('.elements__item');
 
-export const popupElementImage = document.querySelector('.popup_image');
+const popupElementImage = document.querySelector('.popup_image');
+const popupCloseImage = document.querySelector('.popup__close_image');
 const popupImage = document.querySelector('.popup__image');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 
@@ -35,7 +34,7 @@ class Card {
 		cardLike.addEventListener('click', this._handleLike);
 		cardDelete.addEventListener('click', this._handleDelete);
 		cardImage.addEventListener('click', this._openPopup);
-		popupElementImage.addEventListener('click', this._closePopup);
+		popupCloseImage.addEventListener('click', this._closePopup);
 
 
 		return this._element;
@@ -64,7 +63,7 @@ class Card {
 
 }
 
-export function createCard(item) {
+function createCard(item) {
 	const card = new Card(item.name, item.link);
 	const cardElement = card.generateCard();
 	cardsContainer.prepend(cardElement)

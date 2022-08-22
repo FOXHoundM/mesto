@@ -1,6 +1,3 @@
-import {createCard, popupElementImage} from "./Card.js";
-
-
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 
@@ -46,12 +43,12 @@ const closeOnOverlay = (evt) => {
 	}
 };
 
-export const openPopup = (popup) => {
+const openPopup = (popup) => {
 	popup.classList.add('popup_opened');
 	document.addEventListener('keydown', closeOnEscape);
 };
 
-export const closePopup = (popup) => {
+const closePopup = (popup) => {
 	popup.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closeOnEscape);
 };
