@@ -1,3 +1,33 @@
+import {FormValidator} from './FormValidator.js';
+import {Card, popupElementImage} from './Card.js';
+
+const initialCards = [
+	{
+		name: 'Архыз',
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+	},
+	{
+		name: 'Челябинская область',
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+	},
+	{
+		name: 'Иваново',
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+	},
+	{
+		name: 'Камчатка',
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+	},
+	{
+		name: 'Холмогорский район',
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+	},
+	{
+		name: 'Байкал',
+		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+	},
+]
+
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 
@@ -16,7 +46,8 @@ const formAdd = document.querySelector('.popup__form_add');
 const cardInputName = document.querySelector('.popup__input_type_title');
 const cardInputLink = document.querySelector('.popup__input_type_link');
 
-const buttonElement = document.querySelector('.popup__save-button');
+const section = document.querySelector('.elements');
+const cardsContainer = section.querySelector('.elements__item');
 
 const validationConfig = {
 	formSelector: '.popup__form',
@@ -26,6 +57,9 @@ const validationConfig = {
 	inputErrorClass: 'popup__input_type_error',
 	errorTextClass: 'popup__error',
 };
+
+const editFormValidator = new FormValidator(validationConfig, popupEdit);
+const addFormValidator = new FormValidator(validationConfig, popupAdd);
 
 const closeOnEscape = (evt) => {
 	if (evt.key === 'Escape') {
@@ -40,15 +74,21 @@ const closeOnOverlay = (evt) => {
 	}
 };
 
-const openPopup = (popup) => {
+export const openPopup = (popup) => {
 	popup.classList.add('popup_opened');
 	document.addEventListener('keydown', closeOnEscape);
 };
 
-const closePopup = (popup) => {
+export const closePopup = (popup) => {
 	popup.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closeOnEscape);
 };
+
+function createCard(item) {
+	const card = new Card(item.name, item.link);
+	const cardElement = card.generateCard();
+	cardsContainer.prepend(cardElement)
+}
 
 function submitForm(evt) {
 	evt.preventDefault();
@@ -98,3 +138,7 @@ popupAdd.addEventListener('click', closeOnOverlay);
 popupElementImage.addEventListener('click', closeOnOverlay);
 
 popupFormEdit.addEventListener('submit', submitForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+initialCards.forEach(createCard)

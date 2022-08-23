@@ -1,7 +1,6 @@
-const section = document.querySelector('.elements');
-const cardsContainer = section.querySelector('.elements__item');
+import {closePopup, openPopup} from './index.js';
 
-const popupElementImage = document.querySelector('.popup_image');
+export const popupElementImage = document.querySelector('.popup_image');
 const popupCloseImage = document.querySelector('.popup__close_image');
 const popupImage = document.querySelector('.popup__image');
 const popupSubtitle = document.querySelector('.popup__subtitle');
@@ -10,7 +9,7 @@ const container = document
 	.querySelector('.template')
 	.content.querySelector('.cards');
 
-class Card {
+export class Card {
 	constructor(name, link) {
 		this._name = name;
 		this._link = link;
@@ -63,11 +62,5 @@ class Card {
 
 }
 
-function createCard(item) {
-	const card = new Card(item.name, item.link);
-	const cardElement = card.generateCard();
-	cardsContainer.prepend(cardElement)
-}
 
-initialCards.forEach(createCard)
 

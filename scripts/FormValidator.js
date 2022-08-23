@@ -1,4 +1,4 @@
-class FormValidator {
+ export class FormValidator {
 	constructor(config, form){
 		this._config = config;
 		this._form = form;
@@ -71,19 +71,9 @@ class FormValidator {
 		this._setEventListeners();
 	}
 
-	// resetValidation(){
-	// 	this._toggleButtonState();
-	// 	this._inputList.forEach((inputElement) => {
-	// 		this._hideInputError(inputElement);
-	// 	});
-	// }
-
 }
 
-const editFormValidator = new FormValidator(validationConfig, popupEdit);
-const addFormValidator = new FormValidator(validationConfig, popupAdd);
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+
 
 
 
