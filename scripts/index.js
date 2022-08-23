@@ -16,12 +16,9 @@ const formAdd = document.querySelector('.popup__form_add');
 const cardInputName = document.querySelector('.popup__input_type_title');
 const cardInputLink = document.querySelector('.popup__input_type_link');
 
-// const section = document.querySelector('.elements');
-// const cardsContainer = section.querySelector('.elements__item');
-
 const buttonElement = document.querySelector('.popup__save-button');
 
-const formElementList = {
+const validationConfig = {
 	formSelector: '.popup__form',
 	inputSelector: '.popup__input',
 	submitButtonSelector: '.popup__save-button',
@@ -60,10 +57,8 @@ function submitForm(evt) {
 	popupProf.textContent = professionInput.value;
 
 	closePopup(popupEdit);
-	disabledButton(buttonElement, formElementList);
+	editFormValidator._disabledButton()
 }
-
-
 
 formAdd.addEventListener('submit', function (event) {
 	event.preventDefault();
@@ -76,8 +71,7 @@ formAdd.addEventListener('submit', function (event) {
 	createCard(newCard);
 
 	closePopup(popupAdd);
-
-	disabledButton(buttonElement, formElementList);
+	addFormValidator._disabledButton()
 });
 
 popupEditOpen.addEventListener('click', function () {
@@ -104,5 +98,3 @@ popupAdd.addEventListener('click', closeOnOverlay);
 popupElementImage.addEventListener('click', closeOnOverlay);
 
 popupFormEdit.addEventListener('submit', submitForm);
-
-
