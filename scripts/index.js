@@ -1,5 +1,5 @@
 import {FormValidator} from './FormValidator.js';
-import {Card, popupElementImage} from './Card.js';
+import {Card} from './Card.js';
 
 const initialCards = [
 	{
@@ -30,9 +30,11 @@ const initialCards = [
 
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
+const popupImage = document.querySelector('.popup_image');
 
-const popupEditClose = document.querySelector('.popup__close_edit');
-const popupAddClose = document.querySelector('.popup__close_add');
+
+const popupEditCloseBtn = document.querySelector('.popup__close_edit');
+const popupAddCloseBtn = document.querySelector('.popup__close_add');
 
 const popupEditOpen = document.querySelector('.profile__edit-button');
 const popupAddOpen = document.querySelector('.profile__add-button');
@@ -49,6 +51,8 @@ const cardInputLink = document.querySelector('.popup__input_type_link');
 const section = document.querySelector('.elements');
 const cardsContainer = section.querySelector('.elements__item');
 
+
+
 const validationConfig = {
 	formSelector: '.popup__form',
 	inputSelector: '.popup__input',
@@ -61,6 +65,7 @@ const validationConfig = {
 const editFormValidator = new FormValidator(validationConfig, popupEdit);
 const addFormValidator = new FormValidator(validationConfig, popupAdd);
 
+
 const closeOnEscape = (evt) => {
 	if (evt.key === 'Escape') {
 		const activePopup = document.querySelector('.popup_opened');
@@ -69,8 +74,8 @@ const closeOnEscape = (evt) => {
 };
 
 const closeOnOverlay = (evt) => {
-	if (evt.target.classList.contains('popup_opened')) {
-		closePopup(evt.target);
+	if (evt.target === evt.currentTarget) {
+		closePopup(evt.currentTarget);
 	}
 };
 
@@ -97,7 +102,7 @@ function submitForm(evt) {
 	popupProf.textContent = professionInput.value;
 
 	closePopup(popupEdit);
-	editFormValidator._disabledButton()
+	editFormValidator.disabledButton()
 }
 
 formAdd.addEventListener('submit', function (event) {
@@ -111,7 +116,7 @@ formAdd.addEventListener('submit', function (event) {
 	createCard(newCard);
 
 	closePopup(popupAdd);
-	addFormValidator._disabledButton()
+	addFormValidator.disabledButton()
 });
 
 popupEditOpen.addEventListener('click', function () {
@@ -125,17 +130,17 @@ popupAddOpen.addEventListener('click', function () {
 	formAdd.reset();
 });
 
-popupEditClose.addEventListener('click', function () {
+popupEditCloseBtn.addEventListener('click', function () {
 	closePopup(popupEdit);
 });
 
-popupAddClose.addEventListener('click', function () {
+popupAddCloseBtn.addEventListener('click', function () {
 	closePopup(popupAdd);
 });
 
 popupEdit.addEventListener('click', closeOnOverlay);
 popupAdd.addEventListener('click', closeOnOverlay);
-popupElementImage.addEventListener('click', closeOnOverlay);
+popupImage.addEventListener('click', closeOnOverlay);
 
 popupFormEdit.addEventListener('submit', submitForm);
 

@@ -24,7 +24,7 @@
 		})
 	}
 
-	_isValid(inputElement){
+	 _toggleInputError(inputElement){
 		if(!inputElement.validity.valid){
 			this._showInputError(inputElement, inputElement.validationMessage);
 			}
@@ -33,22 +33,22 @@
 		}
 	}
 
-	_disabledButton(){
+	disabledButton(){
 		this._buttonElement.classList.add(this._config.inactiveButtonClass);
 		this._buttonElement.disabled = true;
 	}
 
-	_activeButton() {
+	activeButton() {
 		this._buttonElement.classList.remove(this._config.inactiveButtonClass);
 		this._buttonElement.disabled = false;
 	}
 
 	_toggleButtonState(){
 		if(this._hasInvalidInput(this._inputList)){
-			this._disabledButton()
+			this.disabledButton()
 		}
 		else{
-			this._activeButton()
+			this.activeButton()
 		}
 	}
 
@@ -61,7 +61,7 @@
 
 		this._inputList.forEach((inputElement) => {
 			inputElement.addEventListener('input', () =>{
-				this._isValid(inputElement)
+				this._toggleInputError(inputElement)
 				this._toggleButtonState()
 			})
 		})
@@ -72,17 +72,3 @@
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
