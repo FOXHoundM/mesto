@@ -26,15 +26,15 @@ const initialCards = [
 		name: 'Байкал',
 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
 	},
-]
+];
 
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupImage = document.querySelector('.popup_image');
 
-
 const popupEditCloseBtn = document.querySelector('.popup__close_edit');
 const popupAddCloseBtn = document.querySelector('.popup__close_add');
+const popupCloseImageBtn = document.querySelector('.popup__close_image');
 
 const popupEditOpen = document.querySelector('.profile__edit-button');
 const popupAddOpen = document.querySelector('.profile__add-button');
@@ -51,7 +51,8 @@ const cardInputLink = document.querySelector('.popup__input_type_link');
 const section = document.querySelector('.elements');
 const cardsContainer = section.querySelector('.elements__item');
 
-
+const showImage = document.querySelector('.popup__image');
+const popupSubtitle = document.querySelector('.popup__subtitle');
 
 const validationConfig = {
 	formSelector: '.popup__form',
@@ -65,7 +66,6 @@ const validationConfig = {
 const editFormValidator = new FormValidator(validationConfig, popupEdit);
 const addFormValidator = new FormValidator(validationConfig, popupAdd);
 
-
 const closeOnEscape = (evt) => {
 	if (evt.key === 'Escape') {
 		const activePopup = document.querySelector('.popup_opened');
@@ -74,24 +74,34 @@ const closeOnEscape = (evt) => {
 };
 
 const closeOnOverlay = (evt) => {
-	if (evt.target === evt.currentTarget) {
-		closePopup(evt.currentTarget);
+	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
+		closePopup(evt.target);
 	}
 };
 
-export const openPopup = (popup) => {
+const openPopup = (popup) => {
 	popup.classList.add('popup_opened');
 	document.addEventListener('keydown', closeOnEscape);
 };
 
-export const closePopup = (popup) => {
+const closePopup = (popup) => {
 	popup.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closeOnEscape);
 };
 
+const handleOpenPopup = (name, link) => {
+	popupSubtitle.textContent = name;
+	showImage.alt = name;
+	showImage.src = link;
+	openPopup(popupImage);
+}
+
 function createCard(item) {
-	const card = new Card(item.name, item.link);
+
+	const card = new Card(item.name, item.link, handleOpenPopup);
+
 	const cardElement = card.generateCard();
+
 	cardsContainer.prepend(cardElement)
 }
 
@@ -116,6 +126,7 @@ formAdd.addEventListener('submit', function (event) {
 	createCard(newCard);
 
 	closePopup(popupAdd);
+
 	addFormValidator.disabledButton()
 });
 
@@ -138,6 +149,10 @@ popupAddCloseBtn.addEventListener('click', function () {
 	closePopup(popupAdd);
 });
 
+popupCloseImageBtn.addEventListener('click', () => {
+	closePopup(popupImage)
+});
+
 popupEdit.addEventListener('click', closeOnOverlay);
 popupAdd.addEventListener('click', closeOnOverlay);
 popupImage.addEventListener('click', closeOnOverlay);
@@ -147,3 +162,4 @@ popupFormEdit.addEventListener('submit', submitForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 initialCards.forEach(createCard)
+
