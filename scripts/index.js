@@ -34,9 +34,9 @@ const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupImage = document.querySelector('.popup_image');
 
-const popupEditCloseBtn = document.querySelector('.popup__close_edit');
-const popupAddCloseBtn = document.querySelector('.popup__close_add');
-const popupCloseImageBtn = document.querySelector('.popup__close_image');
+// const popupEditCloseBtn = document.querySelector('.popup__close_edit');
+// const popupAddCloseBtn = document.querySelector('.popup__close_add');
+// const popupCloseImageBtn = document.querySelector('.popup__close_image');
 
 const popupEditOpen = document.querySelector('.profile__edit-button');
 const popupAddOpen = document.querySelector('.profile__add-button');
@@ -75,18 +75,18 @@ const closeOnEscape = (evt) => {
 	}
 };
 
-const closeOnOverlay = (evt) => {
-	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
-		closePopup(evt.target);
-	}
-};
+// const closeOnOverlay = (evt) => {
+// 	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
+// 		closePopup(evt.target);
+// 	}
+// };
 
 const openPopup = (popup) => {
 	popup.classList.add('popup_opened');
 	document.addEventListener('keydown', closeOnEscape);
 };
 
-const closePopup = (popup, evt) => {
+const closePopup = (popup) => {
 	popup.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closeOnEscape);
 
