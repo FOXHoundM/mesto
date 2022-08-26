@@ -28,6 +28,8 @@ const initialCards = [
 	},
 ];
 
+const popups = document.querySelectorAll('.popup')
+
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popupImage = document.querySelector('.popup_image');
@@ -84,9 +86,10 @@ const openPopup = (popup) => {
 	document.addEventListener('keydown', closeOnEscape);
 };
 
-const closePopup = (popup) => {
+const closePopup = (popup, evt) => {
 	popup.classList.remove('popup_opened');
 	document.removeEventListener('keydown', closeOnEscape);
+
 };
 
 const handleOpenPopup = (name, link) => {
@@ -97,7 +100,6 @@ const handleOpenPopup = (name, link) => {
 }
 
 function createCard(item) {
-
 	const card = new Card(item.name, item.link, handleOpenPopup);
 
 	const cardElement = card.generateCard();
@@ -141,21 +143,29 @@ popupAddOpen.addEventListener('click', function () {
 	formAdd.reset();
 });
 
-popupEditCloseBtn.addEventListener('click', function () {
-	closePopup(popupEdit);
+popups.forEach((popup) => {
+	popup.addEventListener('click', function (event) {
+		if(event.target.classList.contains('popup__close') || event.target === event.currentTarget) {
+			closePopup(popup)
+		}
+	});
 });
 
-popupAddCloseBtn.addEventListener('click', function () {
-	closePopup(popupAdd);
-});
-
-popupCloseImageBtn.addEventListener('click', () => {
-	closePopup(popupImage)
-});
-
-popupEdit.addEventListener('click', closeOnOverlay);
-popupAdd.addEventListener('click', closeOnOverlay);
-popupImage.addEventListener('click', closeOnOverlay);
+// popupEditCloseBtn.addEventListener('click', function () {
+// 	closePopup(popupEdit);
+// });
+//
+// popupAddCloseBtn.addEventListener('click', function () {
+// 	closePopup(popupAdd);
+// });
+//
+// popupCloseImageBtn.addEventListener('click', () => {
+// 	closePopup(popupImage)
+// });
+//
+// popupEdit.addEventListener('click', closeOnOverlay);
+// popupAdd.addEventListener('click', closeOnOverlay);
+// popupImage.addEventListener('click', closeOnOverlay);
 
 popupFormEdit.addEventListener('submit', submitForm);
 
