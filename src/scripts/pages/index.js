@@ -7,8 +7,8 @@ import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import {
-	cardInputLink,
-	cardInputName,
+	// cardInputLink,
+	// cardInputName,
 	cardsContainer,
 	formAdd,
 	initialCards,
@@ -62,10 +62,10 @@ const userInfo = new UserInfo({
 	job: profileAbout,
 });
 
-const editProfilePopup = new PopupWithForm(popupEdit, (item) => {
+const editProfilePopup = new PopupWithForm(popupEdit, () => {
 	userInfo.setUserInfo({
-		name: nameInput.name,
-		job: item.about
+		name: nameInput.value,
+		job: professionInput.value
 	});
 
 	editProfilePopup.close();
