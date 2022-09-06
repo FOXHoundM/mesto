@@ -7,8 +7,6 @@ import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import {
-	// cardInputLink,
-	// cardInputName,
 	cardsContainer,
 	formAdd,
 	initialCards,
@@ -23,6 +21,7 @@ import {
 	professionInput,
 	validationConfig,
 } from '../utils/constants.js';
+
 
 const editFormValidator = new FormValidator(validationConfig, popupEdit);
 const addFormValidator = new FormValidator(validationConfig, popupAdd);
@@ -46,11 +45,9 @@ const defaultCardList = new Section(
 );
 
 const addCardPopup = new PopupWithForm(popupAdd, (item) => {
-	const newCardElement = createCard(item)
-	defaultCardList.addItem(newCardElement)
+	createCard(item)
 	addCardPopup.close();
 	formAdd.reset();
-
 	addFormValidator.disabledSubmitButton();
 });
 
@@ -62,10 +59,10 @@ const userInfo = new UserInfo({
 	job: profileAbout,
 });
 
-const editProfilePopup = new PopupWithForm(popupEdit, () => {
+const editProfilePopup = new PopupWithForm(popupEdit, (data) => {
 	userInfo.setUserInfo({
-		name: nameInput.value,
-		job: professionInput.value
+		name: data.name,
+		job: data.job
 	});
 
 	editProfilePopup.close();
