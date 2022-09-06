@@ -1,15 +1,13 @@
 export class Card {
-	constructor(name, link, handleOpenPopup) {
+	constructor(name, link, handleCardClick) {
 		this._name = name;
 		this._link = link;
-		this._handleOpenPopup = handleOpenPopup;
+		this._handleCardClick = handleCardClick;
+		this._template = document.querySelector('.template').content.querySelector('.cards')
 	}
 
 	_getCard() {
-		return document
-			.querySelector('.template')
-			.content.querySelector('.cards')
-			.cloneNode(true);
+		return this._template.cloneNode(true);
 	}
 
 	generateCard() {
@@ -25,8 +23,10 @@ export class Card {
 		cardImage.src = this._link;
 
 		cardLike.addEventListener('click', this._handleLike);
-		cardDelete.addEventListener('click', this._handleDelete);
-		cardImage.addEventListener('click', this._handleOpenPopup);
+		cardDelete.addEventListener('click', ()=>{
+			this._handleDelete('.cards')
+		});
+		cardImage.addEventListener('click', this._handleCardClick);
 
 		return this._element;
 	}
@@ -36,8 +36,7 @@ export class Card {
 		buttonLike.classList.toggle('cards__like_active');
 	}
 
-	_handleDelete(event) {
-		this._element = event.target.closest('.cards');
+	_handleDelete() {
 		this._element.remove();
 	}
 }

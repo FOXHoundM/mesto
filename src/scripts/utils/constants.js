@@ -33,11 +33,9 @@ export const popupEditOpen = document.querySelector('.profile__edit-button');
 export const popupAddOpen = document.querySelector('.profile__add-button');
 
 export const nameInput = document.querySelector('.popup__input_type_name');
-export const popupName = document.querySelector('.profile__title');
-export const professionInput = document.querySelector(
-	'.popup__input_type_prof'
-);
-export const popupProf = document.querySelector('.profile__subtitle');
+export const profileName = document.querySelector('.profile__title');
+export const professionInput = document.querySelector('.popup__input_type_prof');
+export const profileAbout = document.querySelector('.profile__subtitle');
 export const formAdd = document.querySelector('.popup__form_add');
 export const cardInputName = document.querySelector('.popup__input_type_title');
 export const cardInputLink = document.querySelector('.popup__input_type_link');

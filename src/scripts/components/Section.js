@@ -1,8 +1,8 @@
 export class Section {
-	constructor({ items, renderer }, containerSelector) {
+	constructor({items, renderer}, container) {
 		this._items = items; // items это массив initialCards.
 		this._renderer = renderer;
-		this._container = containerSelector;
+		this._container = container;
 	}
 
 	renderItems() {

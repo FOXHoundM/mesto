@@ -1,11 +1,11 @@
 import '../../pages/index.css';
 
-import { FormValidator } from '../components/FormValidator.js';
-import { Card } from '../components/Card.js';
-import { Section } from '../components/Section.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
-import { UserInfo } from '../components/UserInfo.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {Card} from '../components/Card.js';
+import {Section} from '../components/Section.js';
+import {PopupWithImage} from '../components/PopupWithImage.js';
+import {PopupWithForm} from '../components/PopupWithForm.js';
+import {UserInfo} from '../components/UserInfo.js';
 import {
 	cardInputLink,
 	cardInputName,
@@ -18,90 +18,74 @@ import {
 	popupEdit,
 	popupEditOpen,
 	popupImage,
-	popupName,
-	popupProf,
+	profileName,
+	profileAbout,
 	professionInput,
 	validationConfig,
 } from '../utils/constants.js';
 
+const editFormValidator = new FormValidator(validationConfig, popupEdit);
+const addFormValidator = new FormValidator(validationConfig, popupAdd);
+
+const createCard = (item) => {
+	const card = new Card(item.name, item.link, () => {
+		handleCardClick(item.name, item.link);
+	});
+	const cardElement = card.generateCard();
+	defaultCardList.addItem(cardElement);
+
+	return cardElement
+}
+
 const defaultCardList = new Section(
 	{
 		items: initialCards,
-		renderer: (item) => {
-			const card = new Card(item.name, item.link, () => {
-				handleOpenPopup(item.name, item.link);
-			});
-			const cardElement = card.generateCard();
-			defaultCardList.addItem(cardElement);
-		},
+		renderer: createCard
 	},
 	cardsContainer
 );
 
-const imageViewPopup = new PopupWithImage(popupImage);
-const handleOpenPopup = (name, link) => imageViewPopup.open(name, link);
+const addCardPopup = new PopupWithForm(popupAdd, (item) => {
+	const newCardElement = createCard(item)
+	defaultCardList.addItem(newCardElement)
+	addCardPopup.close();
+	formAdd.reset();
 
-const editProfilePopup = new PopupWithForm(popupEdit, (username, job) => {
+	addFormValidator.disabledSubmitButton();
+});
+
+const imageViewPopup = new PopupWithImage(popupImage);
+const handleCardClick = (name, link) => imageViewPopup.open(name, link);
+
+const userInfo = new UserInfo({
+	username: profileName,
+	job: profileAbout,
+});
+
+const editProfilePopup = new PopupWithForm(popupEdit, (item) => {
 	userInfo.setUserInfo({
-		username: nameInput.value,
-		job: professionInput.value,
+		name: nameInput.name,
+		job: item.about
 	});
 
 	editProfilePopup.close();
-	editFormValidator.disabledButton();
+
+	editFormValidator.disabledSubmitButton();
+
 });
 
-const addCardPopup = new PopupWithForm(popupAdd, () => {
-	const newCard = new Section(
-		{
-			items: [
-				{
-					name: cardInputName.value,
-					link: cardInputLink.value,
-				},
-			],
-			renderer: (item) => {
-				const newCard = new Card(item.name, item.link, () => {
-					handleOpenPopup(item.name, item.link);
-				});
-				const newCardElement = newCard.generateCard();
-				defaultCardList.addItem(newCardElement);
-			},
-		},
-		cardsContainer
-	);
-	newCard.renderItems();
-	addCardPopup.close();
-
-	addFormValidator.disabledButton();
-});
-
-const userInfo = new UserInfo({
-	username: popupName,
-	job: popupProf,
-});
-
-const editFormValidator = new FormValidator(validationConfig, popupEdit);
-const addFormValidator = new FormValidator(validationConfig, popupAdd);
-
-function profileEditInputs({ username, job }) {
-	nameInput.value = username;
-	professionInput.value = job;
-}
 
 popupEditOpen.addEventListener('click', function () {
-	const info = userInfo.getUserInfo();
-	profileEditInputs({
-		username: info.username,
-		job: info.job,
-	});
+	const getInfo = userInfo.getUserInfo();
+	nameInput.value = getInfo.name;
+	professionInput.value = getInfo.about;
 
 	editProfilePopup.open();
 });
 
 popupAddOpen.addEventListener('click', function () {
 	addCardPopup.open();
-	formAdd.reset();
+
 });
 
 editFormValidator.enableValidation();
