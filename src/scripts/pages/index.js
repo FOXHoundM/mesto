@@ -15,9 +15,9 @@ import {
 	popupEdit,
 	popupEditOpen,
 	popupImage,
-	profileName,
-	profileAbout,
 	professionInput,
+	profileAbout,
+	profileName,
 	validationConfig,
 } from '../utils/constants.js';
 
@@ -29,15 +29,15 @@ const createCard = (item) => {
 	const card = new Card(item.name, item.link, '.template',() => {
 		handleCardClick(item.name, item.link);
 	});
-	const cardElement = card.generateCard();
-	defaultCardList.addItem(cardElement);
-
-	return cardElement
+	return card.generateCard()
 }
 
 const defaultCardList = new Section({
 	items: initialCards,
-	renderer: createCard,
+	renderer: (item)=>{
+		const cardElement = createCard(item);
+		defaultCardList.addItem(cardElement)
+	},
 	},
 	cardsContainer
 );
@@ -46,6 +46,7 @@ const defaultCardList = new Section({
 const addCardPopup = new PopupWithForm(popupAdd, (item) => {
 	const newCard = createCard(item);
 	defaultCardList.addItem(newCard)
+
 	addCardPopup.close();
 	addFormValidator.disableSubmitButton();
 });
