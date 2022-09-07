@@ -8,7 +8,6 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import {
 	cardsContainer,
-	formAdd,
 	initialCards,
 	nameInput,
 	popupAdd,
@@ -27,7 +26,7 @@ const editFormValidator = new FormValidator(validationConfig, popupEdit);
 const addFormValidator = new FormValidator(validationConfig, popupAdd);
 
 const createCard = (item) => {
-	const card = new Card(item.name, item.link, () => {
+	const card = new Card(item.name, item.link, '.template',() => {
 		handleCardClick(item.name, item.link);
 	});
 	const cardElement = card.generateCard();
@@ -36,46 +35,44 @@ const createCard = (item) => {
 	return cardElement
 }
 
-const defaultCardList = new Section(
-	{
-		items: initialCards,
-		renderer: createCard
+const defaultCardList = new Section({
+	items: initialCards,
+	renderer: createCard,
 	},
 	cardsContainer
 );
 
+
 const addCardPopup = new PopupWithForm(popupAdd, (item) => {
-	createCard(item)
+	const newCard = createCard(item);
+	defaultCardList.addItem(newCard)
 	addCardPopup.close();
-	formAdd.reset();
-	addFormValidator.disabledSubmitButton();
+	addFormValidator.disableSubmitButton();
 });
 
 const imageViewPopup = new PopupWithImage(popupImage);
 const handleCardClick = (name, link) => imageViewPopup.open(name, link);
 
 const userInfo = new UserInfo({
-	username: profileName,
-	job: profileAbout,
+	username: profileName, job: profileAbout,
 });
 
 const editProfilePopup = new PopupWithForm(popupEdit, (data) => {
 	userInfo.setUserInfo({
-		name: data.name,
-		job: data.job
+		name: data.name, job: data.job
 	});
 
 	editProfilePopup.close();
 
-	editFormValidator.disabledSubmitButton();
+	editFormValidator.disableSubmitButton();
 
 });
 
 
 popupEditOpen.addEventListener('click', function () {
-	const getInfo = userInfo.getUserInfo();
-	nameInput.value = getInfo.name;
-	professionInput.value = getInfo.about;
+	const info = userInfo.getUserInfo();
+	nameInput.value = info.name;
+	professionInput.value = info.about;
 
 	editProfilePopup.open();
 });

@@ -1,13 +1,13 @@
 export class Card {
-	constructor(name, link, handleCardClick) {
+	constructor(name, link, templateSelector, handleCardClick) {
 		this._name = name;
 		this._link = link;
 		this._handleCardClick = handleCardClick;
-		this._template = document.querySelector('.template').content.querySelector('.cards')
+		this._template = templateSelector
 	}
 
 	_getCard() {
-		return this._template.cloneNode(true);
+		return document.querySelector(this._template).content.querySelector('.cards').cloneNode(true)
 	}
 
 	generateCard() {
@@ -23,7 +23,7 @@ export class Card {
 		cardImage.src = this._link;
 
 		cardLike.addEventListener('click', this._handleLike);
-		cardDelete.addEventListener('click', ()=>{
+		cardDelete.addEventListener('click', () => {
 			this._handleDelete('.cards')
 		});
 		cardImage.addEventListener('click', this._handleCardClick);
