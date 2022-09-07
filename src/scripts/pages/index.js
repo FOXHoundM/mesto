@@ -26,18 +26,18 @@ const editFormValidator = new FormValidator(validationConfig, popupEdit);
 const addFormValidator = new FormValidator(validationConfig, popupAdd);
 
 const createCard = (item) => {
-	const card = new Card(item.name, item.link, '.template',() => {
+	const card = new Card(item.name, item.link, '.template', () => {
 		handleCardClick(item.name, item.link);
 	});
 	return card.generateCard()
 }
 
 const defaultCardList = new Section({
-	items: initialCards,
-	renderer: (item)=>{
-		const cardElement = createCard(item);
-		defaultCardList.addItem(cardElement)
-	},
+		items: initialCards,
+		renderer: (item) => {
+			const cardElement = createCard(item);
+			defaultCardList.addItem(cardElement)
+		},
 	},
 	cardsContainer
 );

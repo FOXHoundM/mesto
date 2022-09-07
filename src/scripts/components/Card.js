@@ -3,11 +3,11 @@ export class Card {
 		this._name = name;
 		this._link = link;
 		this._handleCardClick = handleCardClick;
-		this._template = templateSelector
+		this._templateSelector = templateSelector
 	}
 
 	_getCard() {
-		return document.querySelector(this._template).content.querySelector('.cards').cloneNode(true)
+		return document.querySelector(this._templateSelector).content.querySelector('.cards').cloneNode(true)
 	}
 
 	generateCard() {
