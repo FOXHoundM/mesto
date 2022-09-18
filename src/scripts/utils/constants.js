@@ -1,29 +1,29 @@
-export const initialCards = [
-	{
-		name: 'Архыз',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-	},
-	{
-		name: 'Челябинская область',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-	},
-	{
-		name: 'Иваново',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-	},
-	{
-		name: 'Камчатка',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-	},
-	{
-		name: 'Холмогорский район',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-	},
-	{
-		name: 'Байкал',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-	},
-];
+// export const initialCards = [
+// 	{
+// 		name: 'Архыз',
+// 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+// 	},
+// 	{
+// 		name: 'Челябинская область',
+// 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+// 	},
+// 	{
+// 		name: 'Иваново',
+// 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+// 	},
+// 	{
+// 		name: 'Камчатка',
+// 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+// 	},
+// 	{
+// 		name: 'Холмогорский район',
+// 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+// 	},
+// 	{
+// 		name: 'Байкал',
+// 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+// 	},
+// ];
 
 export const popupEdit = document.querySelector('.popup_edit');
 export const popupAdd = document.querySelector('.popup_add');
@@ -41,6 +41,11 @@ export const cardInputName = document.querySelector('.popup__input_type_title');
 export const cardInputLink = document.querySelector('.popup__input_type_link');
 
 export const cardsContainer = document.querySelector('.elements__item');
+
+export const popupAvatar = document.querySelector('.popup_avatar');
+export const avatarImage = document.querySelector('.profile__avatar');
+
+export const popupDelete = document.querySelector('.popup_delete')
 
 export const validationConfig = {
 	formSelector: '.popup__form',

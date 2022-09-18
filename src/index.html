@@ -25,19 +25,18 @@
 
 <main class="content">
 	<section class="profile">
-		<img
-			src="<%=require('./images/avatar.jpg')%>"
-			alt="фото аватара"
-			class="profile__avatar"
-		/>
+
+		<div class="profile__avatar"></div>
+
 		<div class="profile__info">
-			<h1 class="profile__title">Жак-Ив Кусто</h1>
-			<p class="profile__subtitle">Исследователь океана</p>
+			<h1 class="profile__title"></h1>
+			<p class="profile__subtitle"></p>
 			<button
 				class="profile__edit-button"
 				type="button"
 				aria-label="Редактировать профиль"
 			></button>
+
 		</div>
 
 		<button
@@ -56,6 +55,7 @@
 	<p class="footer__copyright">&copy;&nbsp; 2022 Микаэль</p>
 </footer>
 
+<!--POPUP ADD-->
 <div class="popup popup_add">
 	<div class="popup__container popup__container_add">
 		<button
@@ -107,6 +107,7 @@
 	</div>
 </div>
 
+<!--POPUP EDIT-->
 <div class="popup popup_edit">
 	<div class="popup__container popup__container_edit">
 		<button
@@ -175,18 +176,90 @@
 	</div>
 </div>
 
+<!--POPUP AVATAR-->
+<div class="popup popup_avatar">
+	<div class="popup__container popup__container_avatar">
+		<button
+			class="popup__close popup__close_avatar"
+			type="button"
+			aria-label="закрыть окно"
+		></button>
+
+		<h2 class="popup__title popup__title_avatar">Обновить аватар</h2>
+
+		<form
+			class="popup__form popup__form_avatar"
+			name="edit-avatar"
+			novalidate
+		>
+			<input
+				aria-label="Обновить аватар"
+				type="url"
+				class="popup__input popup__input_type_avatar"
+				name="avatar"
+				id="avatar-link"
+				placeholder="Ссылка"
+				required
+			/>
+			<span class="popup__error avatar-link-error"></span>
+
+			<button
+				disabled
+				class="popup__save-button"
+				type="submit"
+				aria-label="Сохранить"
+			>
+				Сохранить
+			</button>
+		</form>
+	</div>
+</div>
+
+<!--POPUP SUBMIT-->
+<div class="popup popup_delete">
+	<div class="popup__container popup__container_delete">
+		<button
+			class="popup__close popup__close_delete"
+			type="button"
+			aria-label="закрыть окно"
+		></button>
+
+		<h2 class="popup__title popup__title_delete">Вы уверены?</h2>
+
+		<form
+			class="popup__form popup__form_avatar"
+			name="edit-avatar"
+			novalidate
+		>
+
+			<button
+				class="popup__save-button"
+				type="submit"
+				aria-label="Да"
+			>
+				Да
+			</button>
+		</form>
+
+	</div>
+</div>
+
+
 <!--TEMPLATE-->
 <template class="template">
 	<li class="cards">
 		<button aria-label="удалить карту" class="cards__delete"></button>
-		<img src=" " alt="" class="cards__image"/>
+		<img src=" " alt="" id="" class="cards__image"/>
 		<div class="cards__text">
 			<h2 class="cards__title"></h2>
-			<button
-				class="cards__like"
-				type="button"
-				aria-label="поставить лайк"
-			></button>
+			<div class="cards__like_container">
+				<button
+					class="cards__like"
+					type="button"
+					aria-label="поставить лайк"
+				></button>
+				<span class="cards__like_count"></span>
+			</div>
 		</div>
 	</li>
 </template>

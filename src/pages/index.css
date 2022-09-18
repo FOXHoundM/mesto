@@ -35,13 +35,12 @@
 @import url("../blocks/cards/__title/cards__title.css");
 @import url("../blocks/cards/cards.css");
 @import url("../blocks/cards/__delete/cards__delete.css");
-
+@import url("../blocks/cards/__like/_container/cards__like_container.css");
+@import url("../blocks/cards/__like/_count/cards__like_count.css");
 
 /*Footer*/
 @import url("../blocks/footer/__copyright/footer__copyright.css");
 @import url("../blocks/footer/footer.css");
-
-
 
 /*POPUP*/
 @import url("../blocks/popup/__close/popup__close.css");
