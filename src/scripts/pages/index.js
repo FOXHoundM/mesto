@@ -8,7 +8,7 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import {
 	avatarImage,
-	cardsContainer, // initialCards,
+	cardsContainer,
 	nameInput,
 	popupAdd,
 	popupAddOpen,
@@ -44,7 +44,7 @@ let userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
 	.then(([initialCards, res]) => {
-		userInfo.setUserInfo(res);
+		userInfo.setUserInfo(res)
 		userId = res._id;
 		initialCards.reverse()
 		section.renderItems(initialCards)
@@ -58,13 +58,10 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 
 
 const createCard = (data) => {
-	const card = new Card(
-		data,
-		'.template',
-		(name, link) => {
+	const card = new Card({
+		data: data, templateSelector: '.template', handleCardClick: (name, link) => {
 			imageViewPopup.open(name, link)
-		},
-		(cardId) => {
+		}, handleDeleteClick: (cardId) => {
 			console.log(cardId)
 			deleteCardPopup.open();
 			deleteCardPopup.changeSubmitHandler(() => {
@@ -78,22 +75,26 @@ const createCard = (data) => {
 					})
 			})
 		},
-		(cardId) => {
-			if (card.isLiked()) {
-				api.deleteLike(cardId)
-					.then(res => {
-						card.setLikes(res.likes)
-					})
-
-			} else {
-				api.addLike(cardId)
-					.then(res => {
-						card.setLikes(res.likes)
-					})
-			}
-
+		handleSetLike: (cardId) => {
+			api.addLike(cardId)
+				.then((data) => {
+					card.handleLikeCard(data)
+				})
+				.catch((err) => {
+					console.log(`Ошибка: ${err}`);
+				});
 		},
-	)
+
+		handleRemoveLike: (cardId) => {
+			api.deleteLike(cardId)
+				.then((data) => {
+					card.handleLikeCard(data)
+				})
+				.catch((err) => {
+					console.log(`Ошибка: ${err}`);
+				});
+		}
+	})
 	return card.generateCard()
 }
 
@@ -104,7 +105,7 @@ const section = new Section({
 			link: data.link,
 			likes: data.likes,
 			id: data._id,
-			userId: userId,
+			userId: data.userId,
 			ownerId: data._ownerId
 		})))
 	}
@@ -117,17 +118,12 @@ const section = new Section({
 // 	},
 // }, cardsContainer);
 
-const addCardPopup = new PopupWithForm(popupAdd, (item) => {
+const addCardPopup = new PopupWithForm(popupAdd, (data) => {
 	addCardPopup.loading(true);
-	api.addCard((item))
+	api.addCard((data))
 		.then(res => {
 			const card = createCard({
-				name: res.name,
-				link: res.link,
-				likes: res.likes,
-				id: res._id,
-				userId: userId,
-				ownerId: res._ownerId
+				name: res.name, link: res.link, likes: res.likes, id: res._id, userId: userId, ownerId: res.ownerId
 			})
 			section.addItem(card)
 			addCardPopup.close()
@@ -138,7 +134,6 @@ const addCardPopup = new PopupWithForm(popupAdd, (item) => {
 		.finally(() => {
 			editProfilePopup.loading(false)
 		})
-
 });
 addCardPopup.setEventListeners();
 
@@ -210,6 +205,3 @@ avatarImage.addEventListener('click', () => {
 	editAvatarPopup.open()
 	avatarFormValidator.disableSubmitButton()
 })
-
-
-
