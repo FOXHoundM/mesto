@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "build:dev": "webpack",
-    "devserver": "webpack serve",
+    "devserver": "dev",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/FOXHoundM/mesto/issues"
   },
-  "homepage": "https://github.com/FOXHoundM/mesto#readme",
+  "homepage": "https://foxhoundm.github.io/mesto/",
   "keywords": [],
   "devDependencies": {
     "@babel/core": "^7.18.13",

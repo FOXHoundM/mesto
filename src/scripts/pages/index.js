@@ -48,18 +48,17 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 		userId = res._id;
 		initialCards.reverse()
 		section.renderItems(initialCards)
-
-		console.log(initialCards)
-		console.log(res)
 	})
 	.catch((err) => {
 		console.log(`Ошибка: ${err}`)
 	})
 
-
 const createCard = (data) => {
 	const card = new Card({
-		data: data, templateSelector: '.template', handleCardClick: (name, link) => {
+		data: data,
+		userId: userId,
+		templateSelector: '.template',
+		handleCardClick: (name, link) => {
 			imageViewPopup.open(name, link)
 		}, handleDeleteClick: (cardId) => {
 			console.log(cardId)
@@ -77,8 +76,8 @@ const createCard = (data) => {
 		},
 		handleSetLike: (cardId) => {
 			api.addLike(cardId)
-				.then((data) => {
-					card.handleLikeCard(data)
+				.then((res) => {
+					card.handleLikeCard(res.likes)
 				})
 				.catch((err) => {
 					console.log(`Ошибка: ${err}`);
@@ -87,8 +86,8 @@ const createCard = (data) => {
 
 		handleRemoveLike: (cardId) => {
 			api.deleteLike(cardId)
-				.then((data) => {
-					card.handleLikeCard(data)
+				.then((res) => {
+					card.handleLikeCard(res.likes)
 				})
 				.catch((err) => {
 					console.log(`Ошибка: ${err}`);
@@ -106,24 +105,17 @@ const section = new Section({
 			likes: data.likes,
 			id: data._id,
 			userId: data.userId,
-			ownerId: data._ownerId
+			ownerId: data.owner._id
 		})))
 	}
 }, cardsContainer);
-
-// const section = new Section({
-// 	renderer: (item) => {
-// 		const cardElement = createCard(item);
-// 		section.addItem(cardElement)
-// 	},
-// }, cardsContainer);
 
 const addCardPopup = new PopupWithForm(popupAdd, (data) => {
 	addCardPopup.loading(true);
 	api.addCard((data))
 		.then(res => {
 			const card = createCard({
-				name: res.name, link: res.link, likes: res.likes, id: res._id, userId: userId, ownerId: res.ownerId
+				name: res.name, link: res.link, likes: res.likes, id: res._id, userId: res.userId, ownerId: res.owner._id
 			})
 			section.addItem(card)
 			addCardPopup.close()
@@ -132,11 +124,10 @@ const addCardPopup = new PopupWithForm(popupAdd, (data) => {
 			console.log(`Ошибка: ${err}`)
 		})
 		.finally(() => {
-			editProfilePopup.loading(false)
+			addCardPopup.loading(false)
 		})
 });
 addCardPopup.setEventListeners();
-
 
 const editProfilePopup = new PopupWithForm(popupEdit, (dataForm) => {
 	editProfilePopup.loading(true);
@@ -151,14 +142,13 @@ const editProfilePopup = new PopupWithForm(popupEdit, (dataForm) => {
 		.finally(() => {
 			editProfilePopup.loading(false)
 		})
-
-	editFormValidator.disableSubmitButton();
 });
 
 editProfilePopup.setEventListeners();
 
 popupAddOpen.addEventListener('click', function () {
 	addCardPopup.open();
+	addFormValidator.disableSubmitButton()
 });
 
 
@@ -167,7 +157,6 @@ const editAvatarPopup = new PopupWithForm(popupAvatar, (data) => {
 	api.changeAvatar(data)
 		.then((data) => {
 			userInfo.setUserInfo(data)
-			avatarImage.style.backgroundImage = data.avatar;
 			editAvatarPopup.close()
 		})
 		.catch((err) => {
@@ -176,7 +165,6 @@ const editAvatarPopup = new PopupWithForm(popupAvatar, (data) => {
 		.finally(() => {
 			editAvatarPopup.loading(false)
 		})
-	avatarFormValidator.disableSubmitButton()
 })
 editAvatarPopup.setEventListeners()
 
@@ -198,6 +186,7 @@ popupEditOpen.addEventListener('click', function () {
 	professionInput.value = info.about;
 
 	editProfilePopup.open();
+	editFormValidator.disableSubmitButton();
 });
 
 

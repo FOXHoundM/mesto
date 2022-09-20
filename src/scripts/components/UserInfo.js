@@ -12,9 +12,9 @@ export class UserInfo {
 		};
 	}
 
-	setUserInfo(data) {
-		this._username.textContent = data.name;
-		this._job.textContent = data.about;
-		this._avatar.style.backgroundImage = `url(${data.avatar}`;
+	setUserInfo({name, about, avatar, _id}) {
+		this._username.textContent = name;
+		this._job.textContent = about;
+		this._avatar.style.backgroundImage = `url(${avatar}`;
 	}
 }
