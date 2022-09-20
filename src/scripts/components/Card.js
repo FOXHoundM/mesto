@@ -66,7 +66,6 @@ export class Card {
 				this._handleSetLike(this._id)
 			}
 		});
-
 	}
 
 	_isLiked() {
